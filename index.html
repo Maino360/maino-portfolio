@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Maino360 Portfolio | Main Uddin Hasan | Creative Lead</title>
+    <meta name="description" content="Main Uddin Hasan (Maino360) - Professional Logo Designer & Creative Lead based in Lohagara, Chittagong. Specializing in branding, UI design, and visual identity.">
+    <meta name="keywords" content="Maino360, Main Uddin Hasan, Graphic Designer Bangladesh, Logo Design Chittagong, UI Design, Branding Expert, Creative Lead">
+    <meta name="author" content="Main Uddin Hasan">
+
+    <meta property="og:title" content="Maino360 Portfolio | Creative Lead">
+    <meta property="og:description" content="Professional Design Solutions by Main Uddin Hasan.">
+    <meta property="og:type" content="website">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Montserrat:wght@900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <style>
+        :root { 
+            --primary-red: #ff0000; 
+            --dark-bg: #050505; 
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Custom Scrollbar (যোগ করা হয়েছে) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-red);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #cc0000;
+        }
+
+        html, body { 
+            max-width: 100%;
+            overflow-x: hidden; 
+            font-family: 'Inter', 'Hind Siliguri', sans-serif; 
+            background-color: var(--dark-bg); 
+            color: #ffffff; 
+            scroll-behavior: smooth; 
+            background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 32px 32px;
+        }
+
+        #spotlight {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            background: radial-gradient(600px circle at var(--x) var(--y), rgba(255, 0, 0, 0.08), transparent 80%);
+        }
+
+        #cursor {
+            width: 15px; height: 15px; background: var(--primary-red);
+            border-radius: 50%; position: fixed; pointer-events: none;
+            z-index: 9999; mix-blend-mode: difference; transition: transform 0.1s ease;
+        }
+
+        .glass-card {
+            background: var(--glass); backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border); border-radius: 24px;
+            transition: 0.3s ease; transform-style: preserve-3d;
+            position: relative; z-index: 2;
+        }
+        .glass-card:hover { border-color: var(--primary-red); background: rgba(255, 0, 0, 0.05); }
+
+        .logo-marquee { animation: marquee 30s linear infinite; display: flex; width: max-content; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        .profile-ring { position: absolute; inset: -10px; border: 2px dashed var(--primary-red); border-radius: 50%; animation: rotate 20s linear infinite; }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.05); padding: 8px 18px; border-radius: 100px;
+            border: 1px solid rgba(255,255,255,0.1); font-size: 10px; font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        #toTop.show { transform: translateY(0); opacity: 1; }
+        
+        #loader {
+            position: fixed; inset: 0; z-index: 99999; background: #050505;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: opacity 0.8s ease;
+        }
+
+        .reveal-up, .reveal-left, .reveal-right { visibility: visible !important; opacity: 1 !important; }
+    </style>
+</head>
+<body>
+
+    <div id="loader">
+        <div class="w-16 h-16 border-4 border-red-600 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <div class="text-xl font-black uppercase tracking-[5px]">Maino<span class="text-red-600">360</span></div>
+    </div>
+
+    <div id="spotlight"></div>
+    <div id="cursor" class="hidden md:block"></div>
+
+    <header class="fixed w-full z-50 top-0 py-5 px-6 md:px-20 flex justify-between items-center backdrop-blur-xl border-b border-white/5 bg-black/40">
+        <div class="logo text-2xl font-black uppercase tracking-tighter" style="font-family: 'Montserrat';">
+            Maino<span class="text-red-600">360</span>
+        </div>
+        <nav class="hidden md:flex space-x-8 text-[10px] font-bold uppercase tracking-[2px]">
+            <a href="#home" class="hover:text-red-600 transition">Home</a>
+            <a href="#services" class="hover:text-red-600 transition">Services</a>
+            <a href="#process" class="hover:text-red-600 transition">Process</a>
+            <a href="#skills" class="hover:text-red-600 transition">Skills</a>
+            <a href="https://dribbble.com/maino360" target="_blank" class="text-red-600 border border-red-600 px-4 py-1 rounded-full hover:bg-red-600 hover:text-white transition">Dribbble</a>
+        </nav>
+    </header>
+
+    <section id="home" class="min-h-screen flex items-center px-6 md:px-20 pt-20 relative z-10 overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center w-full">
+            <div class="reveal-left text-center md:text-left">
+                <div class="flex items-center gap-2 mb-6 justify-center md:justify-start">
+                    <span class="relative flex h-3 w-3"><span class="animate-ping absolute h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span></span>
+                    <span class="text-[10px] font-bold uppercase tracking-[2px] text-green-500">Available for Work</span>
+                </div>
+                <h1 class="text-5xl md:text-8xl font-black mb-4 leading-[0.9] uppercase" style="font-family: 'Montserrat';">MAIN UDDIN <br><span class="text-red-600">HASAN</span></h1>
+                <p class="text-slate-400 text-lg mb-8 uppercase tracking-[3px] min-h-[30px]">
+                    I am a <span id="typing" class="text-white font-bold"></span>
+                </p>
+                <div class="flex flex-wrap gap-2 mb-10 justify-center md:justify-start">
+                    <span class="skill-tag">Photoshop</span>
+                    <span class="skill-tag">Illustrator</span>
+                    <span class="skill-tag">Logo Design</span>
+                    <span class="skill-tag">UI Design</span>
+                </div>
+                <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                    <a href="https://wa.me/8801402075915" class="glass-card px-8 py-4 font-bold uppercase text-[11px] tracking-widest flex items-center gap-3"><i class="fab fa-whatsapp text-green-500"></i> WhatsApp</a>
+                    <a href="mailto:hasanmainuddin48@gmail.com" class="bg-red-600 hover:bg-white hover:text-red-600 text-white px-8 py-4 rounded-xl font-bold uppercase text-[11px] tracking-widest transition-all">Contact Me</a>
+                </div>
+            </div>
+            <div class="flex justify-center reveal-right">
+                <div class="relative p-6">
+                    <div class="profile-ring"></div>
+                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-8 border-white/5 relative z-10 bg-neutral-900">
+                        <img src="images/profile.jpg" alt="Main Uddin Hasan" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="py-12 bg-white/[0.02] border-y border-white/5 overflow-hidden relative z-10">
+        <div class="logo-marquee flex items-center gap-20 whitespace-nowrap opacity-30 grayscale hover:opacity-100 transition duration-500">
+            <span class="text-2xl font-bold uppercase">GraphicRiver</span>
+            <span class="text-2xl font-bold uppercase">Envato Market</span>
+            <span class="text-2xl font-bold uppercase">Upwork</span>
+            <span class="text-2xl font-bold uppercase">Behance</span>
+            <span class="text-2xl font-bold uppercase">Fiverr Pro</span>
+            <span class="text-2xl font-bold uppercase">GraphicRiver</span>
+            <span class="text-2xl font-bold uppercase">Envato Market</span>
+        </div>
+    </div>
+
+    <section class="py-20 border-b border-white/5 overflow-hidden relative z-10">
+        <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="reveal-up"><h2 class="text-5xl font-black text-red-600 mb-2 counter" data-target="500">0</h2><p class="text-[9px] uppercase tracking-[3px] text-slate-500 font-bold">Done Projects</p></div>
+            <div class="reveal-up"><h2 class="text-5xl font-black text-white mb-2 counter" data-target="200">0</h2><p class="text-[9px] uppercase tracking-[3px] text-slate-500 font-bold">Happy Clients</p></div>
+            <div class="reveal-up"><h2 class="text-5xl font-black text-red-600 mb-2 counter" data-target="5">0</h2><p class="text-[9px] uppercase tracking-[3px] text-slate-500 font-bold">Years Exp.</p></div>
+            <div class="reveal-up"><h2 class="text-5xl font-black text-white mb-2 counter" data-target="99">0</h2><p class="text-[9px] uppercase tracking-[3px] text-slate-500 font-bold">Satisfaction %</p></div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 px-6 md:px-20 relative z-10 overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <h3 class="text-center text-4xl font-black uppercase mb-20 reveal-up">My Premium <span class="text-red-600">Services</span></h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card p-10 group reveal-up" data-tilt>
+                    <div class="mb-6"><i class="fas fa-pen-nib text-4xl text-red-600"></i></div>
+                    <h4 class="text-xl font-bold mb-4 uppercase">Logo Design</h4>
+                    <p class="text-slate-400 text-sm">ইউনিক এবং মিনিমালিস্ট লোগো ডিজাইন যা ব্র্যান্ডের পরিচয় বহন করবে।</p>
+                </div>
+                <div class="glass-card p-10 group reveal-up" data-tilt>
+                    <div class="mb-6"><i class="fas fa-bullhorn text-4xl text-red-600"></i></div>
+                    <h4 class="text-xl font-bold mb-4 uppercase">Social Media</h4>
+                    <p class="text-slate-400 text-sm">হাই-কনভার্টিং সোশ্যাল মিডিয়া অ্যাড এবং পোস্ট ডিজাইন।</p>
+                </div>
+                <div class="glass-card p-10 group reveal-up" data-tilt>
+                    <div class="mb-6"><i class="fas fa-gem text-4xl text-red-600"></i></div>
+                    <h4 class="text-xl font-bold mb-4 uppercase">Branding</h4>
+                    <p class="text-slate-400 text-sm">আপনার ব্যবসার জন্য পূর্ণাঙ্গ ভিজ্যুয়াল আইডেন্টিটি প্যাকেজ।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="py-24 px-6 md:px-20 relative z-10 bg-white/[0.01]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal-up">
+                <h3 class="text-4xl font-black uppercase mb-4">Work <span class="text-red-600">Process</span></h3>
+                <p class="text-slate-500 text-[10px] tracking-[4px] uppercase font-bold">How I bring your ideas to life</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="glass-card p-8 relative overflow-hidden group reveal-up">
+                    <span class="absolute -right-4 -top-4 text-7xl font-black text-white/5 group-hover:text-red-600/10 transition-colors">01</span>
+                    <div class="w-12 h-12 bg-red-600/20 rounded-xl flex items-center justify-center mb-6 border border-red-600/20">
+                        <i class="fas fa-search text-red-600"></i>
+                    </div>
+                    <h4 class="text-lg font-bold mb-3 uppercase tracking-wider">Research</h4>
+                    <p class="text-slate-400 text-[11px] leading-relaxed">ক্লায়েন্টের প্রয়োজন বোঝা এবং মার্কেট এনালাইসিস করে সঠিক কনসেপ্ট খুঁজে বের করা।</p>
+                </div>
+
+                <div class="glass-card p-8 relative overflow-hidden group reveal-up" style="transition-delay: 100ms;">
+                    <span class="absolute -right-4 -top-4 text-7xl font-black text-white/5 group-hover:text-red-600/10 transition-colors">02</span>
+                    <div class="w-12 h-12 bg-red-600/20 rounded-xl flex items-center justify-center mb-6 border border-red-600/20">
+                        <i class="fas fa-pencil-ruler text-red-600"></i>
+                    </div>
+                    <h4 class="text-lg font-bold mb-3 uppercase tracking-wider">Sketching</h4>
+                    <p class="text-slate-400 text-[11px] leading-relaxed">আইডিয়াগুলোকে কাগজে স্কেচ করে প্রাথমিক রূপ দান করা এবং সেরাটি নির্বাচন করা।</p>
+                </div>
+
+                <div class="glass-card p-8 relative overflow-hidden group reveal-up" style="transition-delay: 200ms;">
+                    <span class="absolute -right-4 -top-4 text-7xl font-black text-white/5 group-hover:text-red-600/10 transition-colors">03</span>
+                    <div class="w-12 h-12 bg-red-600/20 rounded-xl flex items-center justify-center mb-6 border border-red-600/20">
+                        <i class="fas fa-bezier-curve text-red-600"></i>
+                    </div>
+                    <h4 class="text-lg font-bold mb-3 uppercase tracking-wider">Execution</h4>
+                    <p class="text-slate-400 text-[11px] leading-relaxed">ইলাস্ট্রেটর বা ফটোশপে নিখুঁতভাবে ডিজিটাল ভেক্টরে রূপান্তর করা।</p>
+                </div>
+
+                <div class="glass-card p-8 relative overflow-hidden group reveal-up" style="transition-delay: 300ms;">
+                    <span class="absolute -right-4 -top-4 text-7xl font-black text-white/5 group-hover:text-red-600/10 transition-colors">04</span>
+                    <div class="w-12 h-12 bg-red-600/20 rounded-xl flex items-center justify-center mb-6 border border-red-600/20">
+                        <i class="fas fa-rocket text-red-600"></i>
+                    </div>
+                    <h4 class="text-lg font-bold mb-3 uppercase tracking-wider">Delivery</h4>
+                    <p class="text-slate-400 text-[11px] leading-relaxed">প্রয়োজনীয় সব ফরম্যাটে ফাইল গুছিয়ে ক্লায়েন্টের কাছে ফাইনাল হ্যান্ডওভার।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-24 px-6 md:px-20 relative z-10">
+        <div class="max-w-7xl mx-auto flex flex-col items-center">
+            
+            <div class="reveal-up w-full text-center mb-16">
+                <h3 class="text-4xl font-black uppercase">Design <span class="text-red-600">Expertise</span></h3>
+            </div>
+            
+            <div class="w-full max-w-2xl space-y-16">
+                <div class="reveal-up space-y-10">
+                    <div class="w-full">
+                        <div class="flex justify-between items-center mb-4 font-bold uppercase tracking-[2px]">
+                            <span class="text-xs">Photoshop</span>
+                            <span class="text-[11px] text-red-600">95%</span>
+                        </div>
+                        <div class="h-[3px] w-full bg-white/5 rounded-full overflow-hidden">
+                            <div class="h-full bg-red-600 w-[95%] shadow-[0_0_15px_#ff0000]"></div>
+                        </div>
+                    </div>
+
+                    <div class="w-full">
+                        <div class="flex justify-between items-center mb-4 font-bold uppercase tracking-[2px]">
+                            <span class="text-xs">Illustrator</span>
+                            <span class="text-[11px] text-red-600">90%</span>
+                        </div>
+                        <div class="h-[3px] w-full bg-white/5 rounded-full overflow-hidden">
+                            <div class="h-full bg-red-600 w-[90%] shadow-[0_0_15px_#ff0000]"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal-up flex justify-center">
+                    <div class="glass-card p-10 border-t-4 border-red-600 text-center w-full">
+                        <i class="fas fa-quote-left text-3xl text-red-600/30 mb-6 block mx-auto"></i>
+                        <p class="text-lg italic text-slate-300 leading-relaxed mb-8">
+                            "ডিজাইন কেবল সুন্দর দেখানোর জন্য নয়, এটি ব্র্যান্ডের সমস্যা সমাধানের একটি বৈজ্ঞানিক মাধ্যম।"
+                        </p>
+                        <div class="flex flex-col items-center gap-4">
+                            <div class="h-[1px] w-12 bg-red-600"></div>
+                            <h5 class="font-bold text-red-600 uppercase tracking-[4px] text-[10px]">Main Uddin Hasan</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="py-20 px-6 text-center bg-black relative z-10 overflow-hidden">
+        <div class="max-w-3xl mx-auto mb-16 reveal-up">
+            <h2 class="text-4xl md:text-6xl font-black mb-8 uppercase leading-none">Want to start <br><span class="text-red-600">a project?</span></h2>
+            <a href="mailto:hasanmainuddin48@gmail.com" class="inline-block bg-red-600 px-12 py-5 rounded-full font-bold uppercase tracking-widest hover:bg-white hover:text-red-600 transition-all duration-500 shadow-xl shadow-red-600/20">Let's Talk</a>
+        </div>
+        <p class="text-[9px] tracking-[5px] text-slate-700 uppercase font-bold">© <span id="currentYear"></span> MAIN UDDIN HASAN • LOHAGARA, CHITTAGONG</p>
+    </footer>
+
+    <button id="toTop" class="fixed bottom-10 right-10 w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center translate-y-32 opacity-0 transition-all duration-700 z-[99]">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+
+    <script>
+        window.onload = () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+                startCounters();
+                ScrollReveal().delegate(); 
+            }, 800);
+        };
+
+        document.addEventListener('mousemove', e => {
+            document.documentElement.style.setProperty('--x', e.clientX + 'px');
+            document.documentElement.style.setProperty('--y', e.clientY + 'px');
+            const cursor = document.getElementById('cursor');
+            if(cursor) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            }
+        });
+
+        function startCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                let count = 0;
+                const updateCount = () => {
+                    const speed = target / 50;
+                    if (count < target) {
+                        count += speed;
+                        counter.innerText = Math.ceil(count);
+                        setTimeout(updateCount, 30);
+                    } else {
+                        counter.innerText = target + '+';
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        new Typed('#typing', {
+            strings: ['Creative Lead', 'Logo Designer', 'UI Specialist', 'Brand Expert'],
+            typeSpeed: 60, backSpeed: 40, loop: true
+        });
+
+        VanillaTilt.init(document.querySelectorAll(".glass-card"), { max: 10, speed: 400, glare: true, "max-glare": 0.1 });
+
+        const sr = ScrollReveal({
+            distance: '50px',
+            duration: 1000,
+            opacity: 0,
+            scale: 0.95,
+            viewFactor: 0.1,
+            mobile: true,
+            reset: false
+        });
+
+        sr.reveal('.reveal-up', { origin: 'bottom' });
+        sr.reveal('.reveal-left', { origin: 'left' });
+        sr.reveal('.reveal-right', { origin: 'right' });
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        const toTop = document.getElementById('toTop');
+        window.onscroll = () => {
+            if (window.scrollY > 500) { toTop.classList.add('show', 'opacity-100'); toTop.classList.remove('translate-y-32'); }
+            else { toTop.classList.remove('show', 'opacity-100'); toTop.classList.add('translate-y-32'); }
+        };
+        toTop.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+    </script>
+</body>
+</html>
