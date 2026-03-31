@@ -5,4 +5,4 @@ Live link
 https://maino-portfolio.vercel.app/
 
 
-www.maino.pro.bd
+http://maino.pro.bd/
